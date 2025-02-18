@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+#include "struct.cpp"
 
 const int jumlahAkun = 10; 
 
