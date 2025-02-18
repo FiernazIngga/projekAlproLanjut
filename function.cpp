@@ -21,16 +21,16 @@ void registrasi(){
         pilihanBenar = 'n';
         system("cls");
         cout << "-----Register-----" << endl;
-        cout << "Masukkan Nama Anda: "; getline(cin, akun[i].nama);
-        cout << "Masukkan No Hp: "; getline(cin, akun[i].nama);
-        cout << "Masukkan Alamat Dusun-Kelurahan-Kecamatan-Kabupaten-Pulau: "; getline(cin, akun[i].nama);
-        cout << "Masukkan Username Anda: "; getline(cin, akun[i].username);
-        cout << "Masukkan Password Anda: "; getline(cin, akun[i].password);
+        cout << "Masukkan Nama Anda: "; getline(cin, akun[akunPengguna].nama);
+        cout << "Masukkan No Hp: "; getline(cin, akun[akunPengguna].nama);
+        cout << "Masukkan Alamat Dusun-Kelurahan-Kecamatan-Kabupaten-Pulau: "; getline(cin, akun[akunPengguna].nama);
+        cout << "Masukkan Username Anda: "; getline(cin, akun[akunPengguna].username);
+        cout << "Masukkan Password Anda: "; getline(cin, akun[akunPengguna].password);
         cout << "Apakah anda yakin sudah benar? ( y / n ): ";
         cin >> pilihanBenar;
         if (pilihanBenar == 'y')
         {
-            i++;
+            akunPengguna++;
             pilihan = 0;
         } else {
             pilihan = 1;

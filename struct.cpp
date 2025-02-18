@@ -3,7 +3,7 @@
 using namespace std;
 
 const int jumlahBarang = 10;
-int i = 0;
+int akunPengguna = 0;
 
 struct Barang
 {
