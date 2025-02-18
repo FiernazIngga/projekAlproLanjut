@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
-#include <unistd.h> 
 using namespace std;
 
 const int jumlahBarang = 10;
+int i = 0;
 
 struct Barang
 {
@@ -22,16 +22,13 @@ struct Barang
 
 const int jumlahAkun = 10; 
 
-    struct Person{
-        string nama[jumlahAkun];
-        string noHp[jumlahAkun];
-        string alamat[jumlahAkun];
-    };
-    struct User{
-        string username[jumlahAkun];
-        string password[jumlahAkun];
-        Person prsn[jumlahAkun];
-    }user[jumlahAkun];
+struct Akun{
+    string nama;
+    string noHp;
+    string alamat;
+    string username;
+    string password;
+} akun[jumlahAkun];
 
-    int i;
+
 

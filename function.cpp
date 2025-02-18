@@ -1,4 +1,4 @@
-#include "struct.cpp"
+#include "struct.cpp" 
 
 void inisialisasiBarang(){
     barang[0].inputBarang("Kaos Polos", 100000, "Pakaian", "Kaos warna putih", "Jakarta", 0);
@@ -13,38 +13,27 @@ void inisialisasiBarang(){
     barang[9].inputBarang("Kaos Kaki", 50000, "Pakaian", "Kaos kaki warna hitam", "Depok", 0);
 }
 
-void register(){
-    cout<<"-----Register-----";
-    cout<<"Masukkan username: "; cin >> user[].username;
-    cout<<"Masukkan Password: "; cin >> user[].password;
-    cout << "Masukkan Nama: ";
-    cin >> user[].prsn.nama;
-
-    for(int i = 0; i < 5; ++i) {
-        cout << "Masukkan nomor telepon ke-" << (i+1) << ": ";
-        cin >> user.prsn.noHp[i];
+void registrasi(){
+    bool pilihan = true;
+    char pilihanBenar;
+    while (pilihan)
+    {
+        pilihanBenar = 'n';
+        system("cls");
+        cout << "-----Register-----" << endl;
+        cout << "Masukkan Nama Anda: "; getline(cin, akun[i].nama);
+        cout << "Masukkan No Hp: "; getline(cin, akun[i].nama);
+        cout << "Masukkan Alamat Dusun-Kelurahan-Kecamatan-Kabupaten-Pulau: "; getline(cin, akun[i].nama);
+        cout << "Masukkan Username Anda: "; getline(cin, akun[i].username);
+        cout << "Masukkan Password Anda: "; getline(cin, akun[i].password);
+        cout << "Apakah anda yakin sudah benar? ( y / n ): ";
+        cin >> pilihanBenar;
+        if (pilihanBenar == 'y')
+        {
+            i++;
+            pilihan = 0;
+        } else {
+            pilihan = 1;
+        }
     }
-
-    cout << "Masukkan Alamat: ";
-    cin >> user.prsn.alamat;
-
-    cout << "\nData yang telah dimasukkan:\n";
-    cout << "Username: " << user.username << endl;
-    cout << "Nama: " << user.prsn.nama << endl;
-    cout << "Nomor Telepon: ";
-    for(int i = 0; i < 5; ++i) {
-        cout << user.prsn.noHp[i] << " ";
-    }
-    cout << "\nAlamat: " << user.prsn.alamat << endl;
-} 
-
-void login(){
-    cout<<"-----Silahkan login-----";
-    cout<<"Masukkan username: "; cin >> user[jumlahAkun].username;
-    cout<<"Masukkan Password: "; cin >> user[jumlahAkun].password;
-
-}
-
-void Menu(){
-    
 }

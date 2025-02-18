@@ -16,17 +16,17 @@ int main(){
         
         switch (pilihan) {
             case 1:
-                login();
+                // login();
                 break;
             case 2:
                 registrasi();
                 break;
             case 3:
-                checkout();
+                // checkout();
                 break;
             case 4:
                 cout << "Terima kasih telah menggunakan aplikasi ini!" << endl;
-                sleep(3);
+                system("pause");
                 ulang = 0;
                 break;
             default:
