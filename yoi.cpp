@@ -1,63 +1,38 @@
-#include "struct.cpp"
-
-const int jumlahAkun = 10; 
-
-    struct Person{
-        string nama[jumlahAkun];
-        string noHp[jumlahAkun];
-        string alamat[jumlahAkun];
-    };
-    struct User{
-        string username[jumlahAkun];
-        string password[jumlahAkun];
-        Person prsn[jumlahAkun];
-    }user[jumlahAkun];
-
-    int i;
-
-void Register(){
-    inisialisasiBarang();
-    cout<<"-----Register-----";
-    cout<<"Masukkan username: "; cin >> user[jumlahAkun].username;
-    cout<<"Masukkan Password: "; cin >> user[jumlahAkun].password;
-    cout << "Masukkan Nama: ";
-    cin >> user[jumlahAkun].prsn.nama;
-
-    for(int i = 0; i < 5; ++i) {
-        cout << "Masukkan nomor telepon ke-" << (i+1) << ": ";
-        cin >> user.prsn.noHp[i];
-    }
-
-    cout << "Masukkan Alamat: ";
-    cin >> user.prsn.alamat;
-
-    cout << "\nData yang telah dimasukkan:\n";
-    cout << "Username: " << user.username << endl;
-    cout << "Nama: " << user.prsn.nama << endl;
-    cout << "Nomor Telepon: ";
-    for(int i = 0; i < 5; ++i) {
-        cout << user.prsn.noHp[i] << " ";
-    }
-    cout << "\nAlamat: " << user.prsn.alamat << endl;
-} 
-
-void Login(){
-    cout<<"-----Silahkan login-----";
-    cout<<"Masukkan username: "; cin >> user[jumlahAkun].username;
-    cout<<"Masukkan Password: "; cin >> user[jumlahAkun].password;
-
-}
-
-void Menu(){
-    
-}
+#include "function.cpp"
 
 int main(){
-    cout<<"Selamat datang di HAENEM";
-    cout<<"Silahkan pilih menu";
+    inisialisasiBarang();
+    bool ulang = true;
+    int pilihan;
+    while (ulang)
+    {
+        cout << "-----Menu-----" << endl;
+        cout << "1. Login" << endl;
+        cout << "2. Registrasi" << endl;
+        cout << "3. Lihat Barang" << endl;
+        cout << "4. Keluar" << endl;
+        cout << "Pilih menu: ";
+        cin >> pilihan;
+        
+        switch (pilihan) {
+            case 1:
+                login();
+                break;
+            case 2:
+                registrasi();
+                break;
+            case 3:
+                checkout();
+                break;
+            case 4:
+                cout << "Terima kasih telah menggunakan aplikasi ini!" << endl;
+                sleep(3);
+                ulang = 0;
+                break;
+            default:
+                ulang = 1;
+                break;
+        }
+    }
     
-    
-    
-
-    return 0; 
 }
