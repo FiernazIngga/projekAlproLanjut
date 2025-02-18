@@ -17,6 +17,7 @@ const int jumlahAkun = 10;
     int i;
 
 void Register(){
+    inisialisasiBarang();
     cout<<"-----Register-----";
     cout<<"Masukkan username: "; cin >> user[jumlahAkun].username;
     cout<<"Masukkan Password: "; cin >> user[jumlahAkun].password;
