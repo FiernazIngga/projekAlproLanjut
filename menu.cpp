@@ -13,16 +13,17 @@ int main(){
         cout << "4. Keluar" << endl;
         cout << "Pilih menu: ";
         cin >> pilihan;
+        cin.ignore();
         
         switch (pilihan) {
             case 1:
-                // login();
+                login();
                 break;
             case 2:
                 registrasi();
                 break;
             case 3:
-                // checkout();
+                lihatbarang();
                 break;
             case 4:
                 cout << "Terima kasih telah menggunakan aplikasi ini!" << endl;

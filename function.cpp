@@ -37,3 +37,50 @@ void registrasi(){
         }
     }
 }
+
+void login(){
+    string username, password;
+    bool loginSukses = false;
+    int userIndex;
+    cout<<"Masukkan Username Anda: "; cin>>username;
+    cout<<"Masukkan Password Anda: "; cin>>password;
+
+    for(int i=0; i < akunPengguna; i++){
+        if(username == akun[i].username && password == akun[i].password ){
+            loginSukses = true;
+            cout<<"Login Berhasil!";
+            system("pause");
+            aksesAkun(username);
+            break;
+        }else{
+            cout<<"Login gagal";
+            system("pause");
+        }
+    }
+}
+
+void lihatBrg(Barang barang[], int index, int jumlahBarang){
+    if (index == jumlahBarang) {
+        return;
+    }
+    cout << "Nama Barang: " << barang[index].namaBarang << endl;
+    cout << "Kategori Barang: " << barang[index].kategoriBarang << endl;
+    cout << "Deskripsi Barang: " << barang[index].deskripsiBarang << endl;
+    cout << "Lokasi Barang: " << barang[index].lokasiBarang << endl;
+    cout << "Harga Barang: " << barang[index].hargaBarang << endl;
+    cout << "Rating Barang: " << barang[index].ratingBarang << endl;
+    cout << endl;
+    // Panggil fungsi lihatbarang secara rekursif untuk elemen berikutnya dalam array
+    lihatBrg(barang, index + 1, jumlahBarang);
+}
+
+void lihatbarang(){
+    system("cls");
+    lihatBrg(barang, 0, jumlahBarang);
+    system("pause");
+}
+
+
+void aksesAkun(string username){
+    
+}
