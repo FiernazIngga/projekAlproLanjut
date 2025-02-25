@@ -23,7 +23,7 @@ void registrasi(){
         cout << "-----Register-----" << endl;
         cout << "Masukkan Nama Anda: "; getline(cin, akun[akunPengguna].nama);
         cout << "Masukkan No Hp: "; getline(cin, akun[akunPengguna].nama);
-        cout << "Masukkan Alamat Dusun-Kelurahan-Kec        switch (menu)amatan-Kabupaten-Pulau: "; getline(cin, akun[akunPengguna].nama);
+        cout << "Masukkan Alamat Dusun-Kelurahan-Kecamatan-Kabupaten-Pulau: "; getline(cin, akun[akunPengguna].nama);
         cout << "Masukkan Username Anda: "; getline(cin, akun[akunPengguna].username);
         cout << "Masukkan Password Anda: "; getline(cin, akun[akunPengguna].password);
         cout << "Apakah anda yakin sudah benar? ( y / n ): ";
@@ -108,20 +108,20 @@ void lihatBrgUser(Barang barang[], int index, int jumlahBarang) {
 
     if (index == 0) {
         cout << left << setw(20) << "Nama Barang"
-             << setw(20) << "Kategori Barang"
-             << setw(25) << "Deskripsi Barang"
-             << setw(15) << "Lokasi Barang"
-             << setw(15) << "Harga Barang"
-             << setw(15) << "Rating Barang" << endl;
+            << setw(20) << "Kategori Barang"
+            << setw(25) << "Deskripsi Barang"
+            << setw(15) << "Lokasi Barang"
+            << setw(15) << "Harga Barang"
+            << setw(15) << "Rating Barang" << endl;
         cout << "-------------------------------------------------------------" << endl;
     }
 
     cout << left << setw(20) << barang[index].namaBarang
-         << setw(20) << barang[index].kategoriBarang
-         << setw(25) << barang[index].deskripsiBarang
-         << setw(15) << barang[index].lokasiBarang
-         << setw(15) << barang[index].hargaBarang
-         << setw(15) << barang[index].ratingBarang << endl;
+        << setw(20) << barang[index].kategoriBarang
+        << setw(25) << barang[index].deskripsiBarang
+        << setw(15) << barang[index].lokasiBarang
+        << setw(15) << barang[index].hargaBarang
+        << setw(15) << barang[index].ratingBarang << endl;
 
     lihatBrgUser(barang, index + 1, jumlahBarang);
 }

@@ -6,6 +6,7 @@ int main(){
     int pilihan;
     while (ulang)
     {
+        system("cls");
         cout << "-----Menu-----" << endl;
         cout << "1. Login" << endl;
         cout << "2. Registrasi" << endl;
