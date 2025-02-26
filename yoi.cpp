@@ -6,6 +6,7 @@ int main(){
     int pilihan;
     while (ulang)
     {
+        system("cls");
         cout << "-----Menu-----" << endl;
         cout << "1. Login" << endl;
         cout << "2. Registrasi" << endl;
@@ -22,7 +23,20 @@ int main(){
                 registrasi();
                 break;
             case 3:
-                // checkout();
+                system("cls");
+                tampilkanBarang();
+                char pilihKembali;
+                cout << "Kembali ke menu utama? (y/n): ";
+                cin >> pilihKembali;
+                
+                if (pilihKembali == 'y' || pilihKembali == 'Y') {
+                    break;  
+                } else {
+                    system("cls");
+                    ulang = 0;  
+                    cout << "Terima kasih telah menggunakan aplikasi ini!" << endl;
+                    system("pause");
+                }
                 break;
             case 4:
                 cout << "Terima kasih telah menggunakan aplikasi ini!" << endl;

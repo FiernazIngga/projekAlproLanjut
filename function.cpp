@@ -16,11 +16,10 @@ void inisialisasiBarang(){
 void registrasi(){
     bool pilihan = true;
     char pilihanBenar;
-    while (pilihan)
-    {
-        pilihanBenar = 'n';
+   
         system("cls");
         cout << "-----Register-----" << endl;
+        cin.ignore();
         cout << "Masukkan Nama Anda: "; getline(cin, akun[akunPengguna].nama);
         cout << "Masukkan No Hp: "; getline(cin, akun[akunPengguna].nama);
         cout << "Masukkan Alamat Dusun-Kelurahan-Kecamatan-Kabupaten-Pulau: "; getline(cin, akun[akunPengguna].nama);
@@ -28,12 +27,26 @@ void registrasi(){
         cout << "Masukkan Password Anda: "; getline(cin, akun[akunPengguna].password);
         cout << "Apakah anda yakin sudah benar? ( y / n ): ";
         cin >> pilihanBenar;
-        if (pilihanBenar == 'y')
-        {
+        if (pilihanBenar == 'y') {
             akunPengguna++;
-            pilihan = 0;
         } else {
-            pilihan = 1;
+            // Jika tidak yakin, lakukan registrasi lagi secara rekursif
+            registrasi();
         }
     }
+
+
+void tampilkanBarang(int index = 0) {
+    if (index >= jumlahBarang) return; 
+
+    cout << "Nama Barang: " << barang[index].namaBarang << endl;
+    cout << "Harga: Rp" << barang[index].hargaBarang << endl;
+    cout << "Kategori: " << barang[index].kategoriBarang << endl;
+    cout << "Deskripsi: " << barang[index].deskripsiBarang << endl;
+    cout << "Lokasi: " << barang[index].lokasiBarang << endl;
+    cout << "Rating: " << barang[index].ratingBarang << endl;
+    cout << "-------------------------" << endl;
+
+    // Rekursif ke barang berikutnya
+    tampilkanBarang(index + 1);
 }
