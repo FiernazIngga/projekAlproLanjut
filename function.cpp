@@ -57,7 +57,7 @@ void aksesAkun(string username){
     while (menu)
     {
         system("cls");
-        cout << "Selamat datang " << username << " selamat berbelanjaa" << endl;
+        cout << "Selamat datang " << username << "! s  Selamat berbelanjaa~" << endl;
         cout << "Menu\n1. Lihat Barang dan Beli\n2. Keranjang\n3. Lihat Data\n4. Keluar\nIsikan pilian anda: ";
         cin >> pilihan;
         cin.ignore();
@@ -83,12 +83,12 @@ void login(){
     for(int i=0; i < akunPengguna; i++){
         if(username == akun[i].username && password == akun[i].password ){
             loginSukses = true;
-            cout<<"Login Berhasil!";
+            cout<<"Login Berhasil!"<<endl;
             system("pause");
             aksesAkun(username);
             break;
         }else{
-            cout<<"Login gagal";
+            cout<<"Login gagal"<<endl;
             system("pause");
         }
     }
