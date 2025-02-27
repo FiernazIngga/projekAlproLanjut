@@ -3,7 +3,7 @@
 #include <iomanip>
 using namespace std;
 
-const int jumlahBarang = 10;
+const int jumlahBarang = 54;
 int akunPengguna = 0;
 
 struct Barang
