@@ -20,7 +20,7 @@ int main(){
                 registrasi();
                 break;   
             case 2:
-                login();
+                beliBarang();
                 break;                
             case 3:
                 system("cls");
