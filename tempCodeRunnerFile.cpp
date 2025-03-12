@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
+int cariBarang(){
 
-main(){
-    cout << "Hello world" << endl;
-}
+// }
