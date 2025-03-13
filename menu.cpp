@@ -8,8 +8,8 @@ int main(){
     {
         system("cls");
         cout << "-----Menu-----" << endl;
-        cout << "1. Login" << endl;
-        cout << "2. Registrasi" << endl;
+        cout << "1. Registrasi" << endl;
+        cout << "2. Login" << endl;
         cout << "3. Lihat Barang" << endl;
         cout << "4. Keluar" << endl;
         cout << "Pilih menu: ";
@@ -18,10 +18,10 @@ int main(){
         
         switch (pilihan) {
             case 1:
-                login();
+                registrasi();
                 break;
             case 2:
-                registrasi();
+                login();
                 break;
             case 3:
                 lihatbarang();
