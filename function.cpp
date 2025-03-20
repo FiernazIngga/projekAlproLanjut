@@ -1,59 +1,64 @@
 #include "struct.cpp"
+
+void beliBarang();
+void lihatKeranjang();
+void keranjangPelanggan(string username);
+
 void inisialisasiBarang()
 {
-    barang[0].inputBarang(1, "Kaos Polos", 100000, "Kaos", "Kaos warna putih", "Jakarta", 0);
-    barang[1].inputBarang(2, "Kemeja Formal", 150000, "Kemeja", "Kemeja lengan panjang", "Bandung", 0);
-    barang[2].inputBarang(3, "Jaket Denim", 250000, "Jaket", "Jaket bahan denim", "Surabaya", 0);
-    barang[3].inputBarang(4, "Sweater Rajut", 200000, "Sweater", "Sweater bahan rajut", "Yogyakarta", 0);
-    barang[4].inputBarang(5, "Kaos Bergaris", 120000, "Kaos", "Kaos motif garis-garis", "Semarang", 0);
-    barang[5].inputBarang(6, "Kemeja Batik", 180000, "Kemeja", "Kemeja motif batik", "Solo", 0);
-    barang[6].inputBarang(7, "Hoodie", 220000, "Jaket", "Hoodie warna hitam", "Malang", 0);
-    barang[7].inputBarang(8, "Cardigan", 190000, "Cardigan", "Cardigan warna abu-abu", "Bogor", 0);
-    barang[8].inputBarang(9, "Blazer", 300000, "Blazer", "Blazer formal", "Bekasi", 0);
-    barang[9].inputBarang(10, "Kaos Kaki", 50000, "Kaos", "Kaos kaki warna hitam", "Depok", 0);
-    barang[10].inputBarang(11, "T-Shirt", 105000, "Kaos", "T-Shirt warna biru", "Jakarta", 0);
-    barang[11].inputBarang(12, "Kemeja Casual", 140000, "Kemeja", "Kemeja lengan pendek", "Bandung", 0);
-    barang[12].inputBarang(13, "Jaket Kulit", 400000, "Jaket", "Jaket bahan kulit", "Surabaya", 0);
-    barang[13].inputBarang(14, "Sweater Wol", 210000, "Sweater", "Sweater bahan wol", "Yogyakarta", 0);
-    barang[14].inputBarang(15, "Kaos Lengan Panjang", 130000, "Kaos", "Kaos lengan panjang", "Semarang", 0);
-    barang[15].inputBarang(16, "Kemeja Flanel", 160000, "Kemeja", "Kemeja motif flanel", "Solo", 0);
-    barang[16].inputBarang(17, "Sweatshirt", 230000, "Jaket", "Sweatshirt warna abu-abu", "Malang", 0);
-    barang[17].inputBarang(18, "Vest", 190000, "Vest", "Vest warna hitam", "Bogor", 0);
-    barang[18].inputBarang(19, "Blazer Kasual", 320000, "Blazer", "Blazer untuk santai", "Bekasi", 0);
-    barang[19].inputBarang(20, "Jaket Parka", 350000, "Jaket", "Jaket model parka", "Depok", 0);
-    barang[20].inputBarang(21, "Kaos V-Neck", 115000, "Kaos", "Kaos model V-neck", "Jakarta", 0);
-    barang[21].inputBarang(22, "Kemeja Linen", 170000, "Kemeja", "Kemeja bahan linen", "Bandung", 0);
-    barang[22].inputBarang(23, "Jaket Kulit Sintetis", 380000, "Jaket", "Jaket kulit sintetis", "Surabaya", 0);
-    barang[23].inputBarang(24, "Sweater Katun", 220000, "Sweater", "Sweater bahan katun", "Yogyakarta", 0);
-    barang[24].inputBarang(25, "Kaos Raglan", 140000, "Kaos", "Kaos model raglan", "Semarang", 0);
-    barang[25].inputBarang(26, "Kemeja Slim Fit", 180000, "Kemeja", "Kemeja model slim fit", "Solo", 0);
-    barang[26].inputBarang(27, "Jaket Bomber", 270000, "Jaket", "Jaket model bomber", "Malang", 0);
-    barang[27].inputBarang(28, "Cardigan Rajut", 200000, "Cardigan", "Cardigan bahan rajut", "Bogor", 0);
-    barang[28].inputBarang(29, "Blazer Kancing Satu", 310000, "Blazer", "Blazer kancing satu", "Bekasi", 0);
-    barang[29].inputBarang(30, "Kaos Henley", 125000, "Kaos", "Kaos model henley", "Depok", 0);
-    barang[30].inputBarang(31, "Kaos Oversize", 110000, "Kaos", "Kaos model oversize", "Jakarta", 0);
-    barang[31].inputBarang(32, "Kemeja Oxford", 160000, "Kemeja", "Kemeja bahan oxford", "Bandung", 0);
-    barang[32].inputBarang(33, "Jaket Windbreaker", 260000, "Jaket", "Jaket model windbreaker", "Surabaya", 0);
-    barang[33].inputBarang(34, "Sweater Turtleneck", 230000, "Sweater", "Sweater model turtleneck", "Yogyakarta", 0);
-    barang[34].inputBarang(35, "Kaos Lengan Tiga Perempat", 140000, "Kaos", "Kaos lengan tiga perempat", "Semarang", 0);
-    barang[35].inputBarang(36, "Kemeja Denim", 170000, "Kemeja", "Kemeja bahan denim", "Solo", 0);
-    barang[36].inputBarang(37, "Hoodie Zip-Up", 240000, "Jaket", "Hoodie model zip-up", "Malang", 0);
-    barang[37].inputBarang(38, "Cardigan Lengan Pendek", 200000, "Cardigan", "Cardigan lengan pendek", "Bogor", 0);
-    barang[38].inputBarang(39, "Blazer Double-Breasted", 320000, "Blazer", "Blazer double-breasted", "Bekasi", 0);
-    barang[39].inputBarang(40, "Kaos Pocket", 115000, "Kaos", "Kaos dengan saku", "Depok", 0);
-    barang[40].inputBarang(41, "Kaos Basic", 100000, "Kaos", "Kaos warna solid", "Jakarta", 0);
-    barang[41].inputBarang(42, "Kemeja Kerah Mandarin", 150000, "Kemeja", "Kemeja dengan kerah mandarin", "Bandung", 0);
-    barang[42].inputBarang(43, "Jaket Harrington", 250000, "Jaket", "Jaket model Harrington", "Surabaya", 0);
-    barang[43].inputBarang(44, "Sweater Crewneck", 200000, "Sweater", "Sweater model crewneck", "Yogyakarta", 0);
-    barang[44].inputBarang(45, "Kaos Lengan Pendek Polos", 120000, "Kaos", "Kaos lengan pendek warna solid", "Semarang", 0);
-    barang[45].inputBarang(46, "Kemeja Chino", 180000, "Kemeja", "Kemeja bahan chino", "Solo", 0);
-    barang[46].inputBarang(47, "Jaket Varsity", 220000, "Jaket", "Jaket model varsity", "Malang", 0);
-    barang[47].inputBarang(48, "Cardigan Bulu", 190000, "Cardigan", "Cardigan bahan bulu", "Bogor", 0);
-    barang[48].inputBarang(49, "Blazer Casual", 300000, "Blazer", "Blazer untuk santai", "Bekasi", 0);
-    barang[49].inputBarang(50, "Kaos Polo", 130000, "Kaos", "Kaos berkerah", "Depok", 0);
-    barang[50].inputBarang(51, "T-Shirt Grafik", 105000, "Kaos", "T-Shirt dengan gambar", "Jakarta", 0);
-    barang[51].inputBarang(52, "Kemeja Flanel Kotak-Kotak", 140000, "Kemeja", "Kemeja flanel dengan motif kotak-kotak", "Bandung", 0);
-    barang[52].inputBarang(53, "Jaket Kulit Asli", 450000, "Jaket", "Jaket bahan kulit asli", "Surabaya", 0);
+    barang[0].inputBarang(1, "Kaos Polos", 100000, "Kaos", "Kaos warna putih", "Jakarta", 0, 0, 0, 100);
+    barang[1].inputBarang(2, "Kemeja Formal", 150000, "Kemeja", "Kemeja lengan panjang", "Bandung", 0, 0, 0, 100);
+    barang[2].inputBarang(3, "Jaket Denim", 250000, "Jaket", "Jaket bahan denim", "Surabaya", 0, 0, 0, 100);
+    barang[3].inputBarang(4, "Sweater Rajut", 200000, "Sweater", "Sweater bahan rajut", "Yogyakarta", 0, 0, 0, 100);
+    barang[4].inputBarang(5, "Kaos Bergaris", 120000, "Kaos", "Kaos motif garis-garis", "Semarang", 0, 0, 0, 100);
+    barang[5].inputBarang(6, "Kemeja Batik", 180000, "Kemeja", "Kemeja motif batik", "Solo", 0, 0, 0, 100);
+    barang[6].inputBarang(7, "Hoodie", 220000, "Jaket", "Hoodie warna hitam", "Malang", 0, 0, 0, 100);
+    barang[7].inputBarang(8, "Cardigan", 190000, "Cardigan", "Cardigan warna abu-abu", "Bogor", 0, 0, 0, 100);
+    barang[8].inputBarang(9, "Blazer", 300000, "Blazer", "Blazer formal", "Bekasi", 0, 0, 0, 100);
+    barang[9].inputBarang(10, "Kaos Kaki", 50000, "Kaos", "Kaos kaki warna hitam", "Depok", 0, 0, 0, 100);
+    barang[10].inputBarang(11, "T-Shirt", 105000, "Kaos", "T-Shirt warna biru", "Jakarta", 0, 0, 0, 100);
+    barang[11].inputBarang(12, "Kemeja Casual", 140000, "Kemeja", "Kemeja lengan pendek", "Bandung", 0, 0, 0, 100);
+    barang[12].inputBarang(13, "Jaket Kulit", 400000, "Jaket", "Jaket bahan kulit", "Surabaya", 0, 0, 0, 100);
+    barang[13].inputBarang(14, "Sweater Wol", 210000, "Sweater", "Sweater bahan wol", "Yogyakarta", 0, 0, 0, 100);
+    barang[14].inputBarang(15, "Kaos Lengan Panjang", 130000, "Kaos", "Kaos lengan panjang", "Semarang", 0, 0, 0, 100);
+    barang[15].inputBarang(16, "Kemeja Flanel", 160000, "Kemeja", "Kemeja motif flanel", "Solo", 0, 0, 0, 100);
+    barang[16].inputBarang(17, "Sweatshirt", 230000, "Jaket", "Sweatshirt warna abu-abu", "Malang", 0, 0, 0, 100);
+    barang[17].inputBarang(18, "Vest", 190000, "Vest", "Vest warna hitam", "Bogor", 0, 0, 0, 100);
+    barang[18].inputBarang(19, "Blazer Kasual", 320000, "Blazer", "Blazer untuk santai", "Bekasi", 0, 0, 0, 100);
+    barang[19].inputBarang(20, "Jaket Parka", 350000, "Jaket", "Jaket model parka", "Depok", 0, 0, 0, 100);
+    barang[20].inputBarang(21, "Kaos V-Neck", 115000, "Kaos", "Kaos model V-neck", "Jakarta", 0, 0, 0, 100);
+    barang[21].inputBarang(22, "Kemeja Linen", 170000, "Kemeja", "Kemeja bahan linen", "Bandung", 0, 0, 0, 100);
+    barang[22].inputBarang(23, "Jaket Kulit Sintetis", 380000, "Jaket", "Jaket kulit sintetis", "Surabaya", 0, 0, 0, 100);
+    barang[23].inputBarang(24, "Sweater Katun", 220000, "Sweater", "Sweater bahan katun", "Yogyakarta", 0, 0, 0, 100);
+    barang[24].inputBarang(25, "Kaos Raglan", 140000, "Kaos", "Kaos model raglan", "Semarang", 0, 0, 0, 100);
+    barang[25].inputBarang(26, "Kemeja Slim Fit", 180000, "Kemeja", "Kemeja model slim fit", "Solo", 0, 0, 0, 100);
+    barang[26].inputBarang(27, "Jaket Bomber", 270000, "Jaket", "Jaket model bomber", "Malang", 0, 0, 0, 100);
+    barang[27].inputBarang(28, "Cardigan Rajut", 200000, "Cardigan", "Cardigan bahan rajut", "Bogor", 0, 0, 0, 100);
+    barang[28].inputBarang(29, "Blazer Kancing Satu", 310000, "Blazer", "Blazer kancing satu", "Bekasi", 0, 0, 0, 100);
+    barang[29].inputBarang(30, "Kaos Henley", 125000, "Kaos", "Kaos model henley", "Depok", 0, 0, 0, 100);
+    barang[30].inputBarang(31, "Kaos Oversize", 110000, "Kaos", "Kaos model oversize", "Jakarta", 0, 0, 0, 100);
+    barang[31].inputBarang(32, "Kemeja Oxford", 160000, "Kemeja", "Kemeja bahan oxford", "Bandung", 0, 0, 0, 100);
+    barang[32].inputBarang(33, "Jaket Windbreaker", 260000, "Jaket", "Jaket model windbreaker", "Surabaya", 0, 0, 0, 100);
+    barang[33].inputBarang(34, "Sweater Turtleneck", 230000, "Sweater", "Sweater model turtleneck", "Yogyakarta", 0, 0, 0, 100);
+    barang[34].inputBarang(35, "Kaos Lengan Tiga Perempat", 140000, "Kaos", "Kaos lengan tiga perempat", "Semarang", 0, 0, 0, 100);
+    barang[35].inputBarang(36, "Kemeja Denim", 170000, "Kemeja", "Kemeja bahan denim", "Solo", 0, 0, 0, 100);
+    barang[36].inputBarang(37, "Hoodie Zip-Up", 240000, "Jaket", "Hoodie model zip-up", "Malang", 0, 0, 0, 100);
+    barang[37].inputBarang(38, "Cardigan Lengan Pendek", 200000, "Cardigan", "Cardigan lengan pendek", "Bogor", 0, 0, 0, 100);
+    barang[38].inputBarang(39, "Blazer Double-Breasted", 320000, "Blazer", "Blazer double-breasted", "Bekasi", 0, 0, 0, 100);
+    barang[39].inputBarang(40, "Kaos Pocket", 115000, "Kaos", "Kaos dengan saku", "Depok", 0, 0, 0, 100);
+    barang[40].inputBarang(41, "Kaos Basic", 100000, "Kaos", "Kaos warna solid", "Jakarta", 0, 0, 0, 100);
+    barang[41].inputBarang(42, "Kemeja Kerah Mandarin", 150000, "Kemeja", "Kemeja dengan kerah mandarin", "Bandung", 0, 0, 0, 100);
+    barang[42].inputBarang(43, "Jaket Harrington", 250000, "Jaket", "Jaket model Harrington", "Surabaya", 0, 0, 0, 100);
+    barang[43].inputBarang(44, "Sweater Crewneck", 200000, "Sweater", "Sweater model crewneck", "Yogyakarta", 0, 0, 0, 100);
+    barang[44].inputBarang(45, "Kaos Lengan Pendek Polos", 120000, "Kaos", "Kaos lengan pendek warna solid", "Semarang", 0, 0, 0, 100);
+    barang[45].inputBarang(46, "Kemeja Chino", 180000, "Kemeja", "Kemeja bahan chino", "Solo", 0, 0, 0, 100);
+    barang[46].inputBarang(47, "Jaket Varsity", 220000, "Jaket", "Jaket model varsity", "Malang", 0, 0, 0, 100);
+    barang[47].inputBarang(48, "Cardigan Bulu", 190000, "Cardigan", "Cardigan bahan bulu", "Bogor", 0, 0, 0, 100);
+    barang[48].inputBarang(49, "Blazer Casual", 300000, "Blazer", "Blazer untuk santai", "Bekasi", 0, 0, 0, 100);
+    barang[49].inputBarang(50, "Kaos Polo", 130000, "Kaos", "Kaos berkerah", "Depok", 0, 0, 0, 100);
+    barang[50].inputBarang(51, "T-Shirt Grafik", 105000, "Kaos", "T-Shirt dengan gambar", "Jakarta", 0, 0, 0, 100);
+    barang[51].inputBarang(52, "Kemeja Flanel Kotak-Kotak", 140000, "Kemeja", "Kemeja flanel dengan motif kotak-kotak", "Bandung", 0, 0, 0, 100);
+    barang[52].inputBarang(53, "Jaket Kulit Asli", 450000, "Jaket", "Jaket bahan kulit asli", "Surabaya", 0, 0, 0, 100);
 }
 
 void registrasi()
@@ -63,17 +68,18 @@ void registrasi()
 
     system("cls");
     cout << "-----Register-----" << endl;
-    cin.ignore();
     cout << "Masukkan Nama Anda: ";
     getline(cin, akun[akunPengguna].nama);
     cout << "Masukkan No Hp: ";
-    getline(cin, akun[akunPengguna].nama);
+    getline(cin, akun[akunPengguna].noHp);
     cout << "Masukkan Alamat Dusun-Kelurahan-Kecamatan-Kabupaten-Pulau: ";
-    getline(cin, akun[akunPengguna].nama);
+    getline(cin, akun[akunPengguna].alamat);
     cout << "Masukkan Username Anda: ";
     getline(cin, akun[akunPengguna].username);
     cout << "Masukkan Password Anda: ";
     getline(cin, akun[akunPengguna].password);
+    cout << "Masukkan jumlah Saldo Dana Anda: ";
+    cin >> akun[akunPengguna].saldo; cin.ignore();
     cout << "Apakah anda yakin sudah benar? ( y / n ): ";
     cin >> pilihanBenar;
     if (pilihanBenar == 'y')
@@ -99,9 +105,6 @@ void tampilkanBarang(int index = 0)
     }
 }
 
-void beliBarang();
-void lihatKeranjang();
-
 void aksesAkun(string username)
 {
     int pilihan;
@@ -121,7 +124,12 @@ void aksesAkun(string username)
             break;
         case 2:
             system("cls");
-            lihatKeranjang();
+            keranjangPelanggan(username);
+            break;
+        case 5:
+            system("cls");
+            cout << "Keluar....." << endl;
+            menu = 0;
             break;
         default:
             menu = 1;
@@ -182,6 +190,8 @@ void lihatBrg(Barang barang[], int index, int jumlahBarang)
     cout << "Lokasi Barang: " << barang[index].lokasiBarang << endl;
     cout << "Harga Barang: " << barang[index].hargaBarang << endl;
     cout << "Rating Barang: " << barang[index].ratingBarang << endl;
+    cout << "Jumlah Dibeli: " << barang[index].jumlahDibeliSemua << endl;
+    cout << "Stok Barang: " << barang[index].stokBarang << endl;
     cout << endl;
     lihatBrg(barang, index + 1, jumlahBarang);
 }
@@ -193,38 +203,9 @@ void lihatbarang()
     system("pause");
 }
 
-void insertionSortRendah(Barang barang[], int n)
+void tampilkanBarangSorting()
 {
-    for (int i = 1; i < n; i++)
-    {
-        Barang key = barang[i];
-        int j = i - 1;
-        while (j >= 0 && barang[j].hargaBarang > key.hargaBarang)
-        {
-            barang[j + 1] = barang[j];
-            j--;
-        }
-        barang[j + 1] = key;
-    }
-}
-
-void insertionSortTinggi(Barang barang[], int n)
-{
-    for (int i = 1; i < n; i++)
-    {
-        Barang key = barang[i];
-        int j = i - 1;
-        while (j >= 0 && barang[j].hargaBarang < key.hargaBarang)
-        {
-            barang[j + 1] = barang[j];
-            j--;
-        }
-        barang[j + 1] = key;
-    }
-}
-
-void tampilkanBarangSorting1()
-{
+    system("cls");
     cout << "Daftar Barang (Termurah ke Termahal):\n";
     for (int i = 0; i < jumlahBarang; i++)
     {
@@ -234,10 +215,44 @@ void tampilkanBarangSorting1()
         cout << "Deskripsi Barang: " << barang[i].deskripsiBarang << endl;
         cout << "Lokasi Barang: " << barang[i].lokasiBarang << endl;
         cout << "Harga Barang: " << barang[i].hargaBarang << endl;
-        cout << "Rating Barang: " << barang[i].ratingBarang << endl;
+        cout << "Rating Barang: " << barang[i].ratingBarang / barang[i].jumlahDibeliRating << endl;
+        cout << "Jumlah Dibeli: " << barang[i].jumlahDibeliSemua << endl;
+        cout << "Stok Barang: " << barang[i].stokBarang << endl;
         cout << endl;
     }
 }
+
+void insertionSort(Barang barang[], int n, string identifikasi)
+{
+    if (identifikasi == "tinggi")
+    {
+        for (int i = 1; i < n; i++)
+        {
+            Barang key = barang[i];
+            int j = i - 1;
+            while (j >= 0 && barang[j].hargaBarang < key.hargaBarang)
+            {
+                barang[j + 1] = barang[j];
+                j--;
+            }
+            barang[j + 1] = key;
+        }
+    } else if (identifikasi == "rendah") {
+        for (int i = 1; i < n; i++)
+        {
+            Barang key = barang[i];
+            int j = i - 1;
+            while (j >= 0 && barang[j].hargaBarang > key.hargaBarang)
+            {
+                barang[j + 1] = barang[j];
+                j--;
+            }
+            barang[j + 1] = key;
+        }
+    }
+    tampilkanBarangSorting();
+}
+
 
 void beliBarang()
 {
@@ -256,12 +271,10 @@ void beliBarang()
         switch (pilihan)
         {
         case 1:
-            insertionSortRendah(barang, jumlahBarang);
-            tampilkanBarangSorting1();
+            insertionSort(barang, jumlahBarang, "rendah");
             break;
         case 2:
-            insertionSortTinggi(barang, jumlahBarang);
-            tampilkanBarangSorting1();
+            insertionSort(barang, jumlahBarang, "tinggi");
             break;
         }
     }
@@ -318,7 +331,119 @@ void lihatKeranjang()
         keranjang[i].lihatWaktu();
         cout << endl;
     }
-    system("pause");
+}
+
+int cekIsiRiwayat(){
+    int cek = 0;
+    for (int i = 0; i < jumlahMaksBeli; i++)
+    {
+        if (riwayatPembelian[i].namaBarang != "")
+        {
+            cek += 1;
+        }
+    }
+    return cek;
+}
+
+int cekUsername(string username){
+    for (int i = 0; i < jumlahAkun; i++)
+    {
+        if (akun[i].username == username)
+        {
+            return i;
+        }
+    }
+}
+
+void beliSemua(string username){
+    int indeks = cekIsiRiwayat(), rating, hargaTotal;
+    char pilihBeli;
+    char pilih;
+    bool ratingUlang;
+    for (int i = 0; i < jumlahKeranjang; i++)
+    {
+        hargaTotal += keranjang[i].hargaBarang;
+    }
+    cout << "Barang yang dibeli: " << endl;
+    for (int i = 0; i < jumlahKeranjang; i++)
+    {
+        if (keranjang[i].namaBarang != "")
+        {
+            cout << i + 1 << ". " << keranjang[i].namaBarang << " | " << keranjang[i].hargaBarang << endl;
+        }
+    }
+    cout << "Harga total seluruh barang: " << hargaTotal << endl;
+    cout << "Apakah anda yakin ingin membeli seluruh barang?(y/n)"; cin >> pilihBeli; cin.ignore();
+    if (pilihBeli == 'y')
+    {
+        if (hargaTotal > akun[cekUsername(username)].saldo)
+        {
+            cout << "Saldo anda tidak mencukupi untuk membeli barang." << endl;
+        } else {
+            for (int intBarang = 0; intBarang < jumlahBarang; intBarang++)
+            {
+                for (int i = 0; i < jumlahKeranjang; i++)
+                {
+                    if (barang[intBarang].idBarang == keranjang[i].idBarang)
+                    {
+                        barang[intBarang].stokBarang -= 1;
+                        keranjang[i] = keranjang[i+1];
+                        jumlahKeranjang -= 1;
+                        cout << "Apakah anda ingin memberi rating?: "; cin >> pilih; cin.ignore();
+                        if (pilih == 'y' || 'Y')
+                        {
+                            cout << "Berapa rating yang ingin anda beri (1 - 5)?: "; cin >> rating; cin.ignore();
+                            if (rating > 5 || rating < 1)
+                            {
+                                cout << "Rating antara 1 sampai 5" << endl;
+                                system("pause");
+                                ratingUlang = 1;
+                            } else {
+                                barang[intBarang].ratingBarang += rating;
+                                barang[intBarang].jumlahDibeliRating += 1;
+                            }
+                        } else {
+                            cout << "Terima Kasih Telah Berbelanja" << endl;
+                            barang[intBarang].jumlahDibeliSemua += 1;
+                            system("pause");
+                        }
+                    }
+                    riwayatPembelian[indeks].namaBarang = keranjang[i].namaBarang;
+                    riwayatPembelian[indeks].hargaBarang = keranjang[i].hargaBarang;
+                    riwayatPembelian[indeks].eksekusiWaktuMasuk();
+                }
+            }
+            akun[cekUsername(username)].saldo -= hargaTotal;
+            cout << "Barang berhasil dibeli.\nSisa saldo anda adalah Rp. " << akun[cekUsername(username)].saldo << endl;
+        }
+    }
+}
+
+void keranjangPelanggan(string username){
+    int pilihan;
+    bool ulangiPilihan = 1;
+    while (ulangiPilihan)
+    {
+        lihatKeranjang();
+        cout << endl;
+        cout << "Menu Keranjang: " << endl;
+        cout << "1. Beli Semua\n2. Beli Beberapa\n3. Hapus Barang dari Keranjang\n4. Keluar\nMasukkan Pilihan Anda: ";
+        cin >> pilihan;
+        cin.ignore();
+        switch (pilihan)
+        {
+        case 1:
+            beliSemua(username);
+            break;
+        case 4:
+            ulangiPilihan = 0;
+            break;
+        default:
+            ulangiPilihan = 1;
+            break;
+        }
+    }
+    
 }
 
 // void lihatBrgUser(Barang barang[], int index) {
