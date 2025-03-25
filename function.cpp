@@ -191,13 +191,13 @@ void lihatBrg(Barang barang[], int index, int jumlahBarang)
     {
         return;
     }
-    cout << "No: " << barang[index].idBarang << "|";
-    cout << "Nama Barang: " << barang[index].namaBarang << "|";
+    cout << "No: " << barang[index].idBarang  << endl;
+    cout << "Nama Barang: " << barang[index].namaBarang << endl;
     cout << "Kategori Barang: " << barang[index].kategoriBarang << endl;
     cout << "Deskripsi Barang: " << barang[index].deskripsiBarang << endl;
     cout << "Lokasi Barang: " << barang[index].lokasiBarang << endl;
     cout << "Harga Barang: " << barang[index].hargaBarang << endl;
-    cout << "Rating Barang: " << barang[index].ratingBarang << endl;
+    cout << "Rating Barang: " << barang[index].ratingBarang / barang[index].jumlahDibeliRating << endl;
     cout << "Jumlah Dibeli: " << barang[index].jumlahDibeliSemua << endl;
     cout << "Stok Barang: " << barang[index].stokBarang << endl;
     cout << endl;
@@ -456,6 +456,7 @@ void beliSemua(string username){
                                             {
                                                 barang[intBarang].ratingBarang += rating;
                                                 barang[intBarang].jumlahDibeliRating += 1;
+                                                barang[intBarang].jumlahDibeliSemua += 1;
                                                 ratingUlang = false;
                                             }
                                             else
