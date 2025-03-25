@@ -2,13 +2,14 @@
 #include <string>
 #include <iomanip>
 #include <ctime>
+#include <cctype>
 using namespace std;
 
 const int jumlahBarang = 53;
 const int jumlahAkun = 10; 
 const int keranjangFull = 6;
 const int jumlahMaksBeli = 100;
-int jumlahKeranjang= 0, akunPengguna = 0;
+int akunPengguna = 0;
 
 tm* waktuLocal(){
     time_t waktu_sekarang;
@@ -36,20 +37,11 @@ struct Barang
     }
 } barang[jumlahBarang];
 
-
-struct Akun{
-    string nama;
-    string noHp;
-    string alamat;
-    string username;
-    string password;
+struct OyenPay
+{
+    string idOyen, pin;
     int saldo;
-} akun[jumlahAkun];
-
-struct Keranjang{
-    int idBarang;
-    string namaBarang;
-    int hargaBarang, waktuMasuk[6];
+    int waktuMasuk[6];
     tm* waktu_lokal = waktuLocal();
     void eksekusiWaktuMasuk(){
         this->waktuMasuk[0] = waktu_lokal->tm_sec;
@@ -76,7 +68,13 @@ struct Keranjang{
         };        
         cout << this->waktuMasuk[3] << "-" << bulan[(this->waktuMasuk[4]) - 1]  << "-" << this->waktuMasuk[5] << endl;
     }
-} keranjang[keranjangFull-1];
+};
+
+struct Keranjang{
+    int idBarang;
+    string namaBarang;
+    int hargaBarang;
+};
 
 struct RiwayatBeli
 {
@@ -93,22 +91,26 @@ struct RiwayatBeli
     }
     void lihatWaktu(){
         string bulan[12] = {
-            "Januari", 
-            "Februari", 
-            "Maret", 
-            "April", 
-            "Mei", 
-            "Juni", 
-            "Juli", 
-            "Agustus", 
-            "September", 
-            "Oktober", 
-            "November", 
-            "Desember"
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
         };        
-        cout << this->waktuBeli[3] << "-" << bulan[(this->waktuBeli[4]) - 1]  << "-" << this->waktuBeli[5] << endl;
+        
+        cout << setw(2) << setfill('0') << this->waktuBeli[2] << ":"    
+            << setw(2) << setfill('0') << this->waktuBeli[1] << ":"   
+            << setw(2) << setfill('0') << this->waktuBeli[0] << " ";
+        cout << this->waktuBeli[3] << " " << bulan[this->waktuBeli[4] - 1] << " " << this->waktuBeli[5] << endl;
     }
-} riwayatPembelian[jumlahMaksBeli];
+};
 
-
+struct Akun{
+    int jumlahKeranjang= 0, riwayatBeli = 0;
+    string nama;
+    string noHp;
+    string alamat;
+    string username;
+    string password;
+    OyenPay oyenSaldo[jumlahAkun];
+    Keranjang keranjang[keranjangFull-1];
+    RiwayatBeli riwayatPembelian[jumlahMaksBeli];
+} akun[jumlahAkun];
 

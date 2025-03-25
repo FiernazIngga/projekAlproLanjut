@@ -8,6 +8,7 @@ int main(){
     {
         system("cls");
         cout << "-----Menu-----" << endl;
+        cout << "Toko si OYENNN" << endl;
         cout << "1. Registrasi" << endl;
         cout << "2. Login" << endl;
         cout << "3. Lihat Barang" << endl;
