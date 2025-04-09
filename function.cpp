@@ -495,12 +495,176 @@ void beliSemua(string username){
         }
     }
 }
+
+int cariIndexBarangById(int indeksUsername, int idBarang) {
+    for (int i = 0; i < akun[indeksUsername].jumlahKeranjang; i++) {
+        if (akun[indeksUsername].keranjang[i].idBarang == idBarang) {
+            return i;
+        }
+    }
+    return -1; 
+}
+
+
 // Ini Void Ketika Pelanggan Memilih Beli Semua Barang Dikeranjang Selesai
+void beliBeberapa(string username){
+    int indeksUsername = cekUsername(username);
+    int indeks = cekIsiRiwayat(username), rating, hargaTotal = 0;
+    string pinOyen;
+    char pilihBeli, buatAkun = 'n';
+    const int maksBarangDipilih = 100;
+    int barangDipilih[maksBarangDipilih];
+    int jumlahDipilih = 0;
+    char pilih;
+    int idInput;
+    bool ratingUlang, ulangiPin = 1;
+
+    do {
+        cout << "Pilih idBarang yang ingin dibeli: ";
+        cin >> idInput;
+
+        int indexBarang = cariIndexBarangById(indeksUsername, idInput);
+
+        if (indexBarang != -1) {
+            barangDipilih[jumlahDipilih] = indexBarang;
+            jumlahDipilih++;
+        } else {
+            cout << "ID barang tidak ditemukan di keranjang!\n";
+        }
+
+        cout << "Apakah anda ingin memilih barang lain? (y / n): ";
+        cin >> pilih;
+
+    } while ((pilih == 'y' || pilih == 'Y') && jumlahDipilih < maksBarangDipilih);
+
+    if (jumlahDipilih == 0) {
+        cout << "Tidak ada barang yang dipilih.\n";
+        return;
+    }
+
+    // Hitung total harga
+    for (int i = 0; i < jumlahDipilih; i++) {
+        hargaTotal += akun[indeksUsername].keranjang[barangDipilih[i]].hargaBarang;
+    }
+
+    system("cls");
+    cout << "Barang yang ingin dibeli:\n";
+    for (int i = 0; i < jumlahDipilih; i++) {
+        int idx = barangDipilih[i];
+        cout << i + 1 << ". " << akun[indeksUsername].keranjang[idx].namaBarang
+             << " | Rp " << akun[indeksUsername].keranjang[idx].hargaBarang << endl;
+    }
+    cout << "Total harga: Rp " << hargaTotal << endl;
+    cout << "Apakah anda yakin ingin membeli seluruh barang?(y/n): "; cin >> pilihBeli; cin.ignore();
+    if (pilihBeli == 'y')
+    {
+        if (akun[indeksUsername].oyenSaldo[indeksUsername].idOyen == "")
+        {
+            system("cls");
+            cout << "Waduh sepertinya anda belum membuat akun OyenPay untuk pembayaran.\nBuat akun OyenPay yukk untuk pembayaran barang anda." << endl;
+            cout << "Apakah anda ingin membuat akun OyenPay? y/n: "; cin >> buatAkun;
+            if (buatAkun == 'y')
+            {
+                buatAkunOyenPay(username);
+            }
+        } else {
+            if (hargaTotal > akun[indeksUsername].oyenSaldo[indeksUsername].saldo)
+            {
+                cout << "Saldo anda tidak mencukupi untuk membeli barang." << endl;
+            } else {
+                while (ulangiPin)
+                {
+                    system("cls");
+                    cout << "Masukkan pin OyenPay anda: "; cin >> pinOyen;
+                    if (pinOyen != akun[indeksUsername].oyenSaldo[indeksUsername].pin)
+                    {
+                        cout << "Pin yang anda masukkan salah tuh, ulangi dong!!!" << endl;
+                        system("pause");
+                        ulangiPin = 1;
+                    }
+                    else
+                    {
+                        ulangiPin = 0;
+                        for (int i = akun[indeksUsername].jumlahKeranjang; i >= 0; i--)
+                        {
+                            for (int intBarang = 0; intBarang < jumlahBarang; intBarang++)
+                            {
+                                if (barang[intBarang].idBarang == akun[indeksUsername].keranjang[i].idBarang)
+                                {
+                                    barang[intBarang].stokBarang -= 1;
+
+                                    cout << "Apakah anda ingin memberi rating pada " << barang[intBarang].namaBarang << "? (y/n): ";
+                                    cin >> pilih; cin.ignore();
+
+                                    if (pilih == 'y' || pilih == 'Y')
+                                    {
+                                        do {
+                                            cout << "Berapa rating yang ingin anda beri (1 - 5)?: ";
+                                            cin >> rating;
+                                            if (rating >= 1 && rating <= 5)
+                                            {
+                                                barang[intBarang].ratingBarang += rating;
+                                                barang[intBarang].jumlahDibeliRating += 1;
+                                                barang[intBarang].jumlahDibeliSemua += 1;
+                                                ratingUlang = false;
+                                            }
+                                            else
+                                            {
+                                                cout << "Rating harus antara 1 sampai 5!\n";
+                                                system("pause");
+                                                ratingUlang = true;
+                                            }
+                                        } while (ratingUlang);
+                                    }
+                                    else
+                                    {
+                                        cout << "Terima Kasih Telah Berbelanja" << endl;
+                                        barang[intBarang].jumlahDibeliSemua += 1;
+                                    }
+                                    akun[indeksUsername].riwayatPembelian[akun[indeksUsername].riwayatBeli].namaBarang = akun[indeksUsername].keranjang[i].namaBarang;
+                                    akun[indeksUsername].riwayatPembelian[akun[indeksUsername].riwayatBeli].hargaBarang = akun[indeksUsername].keranjang[i].hargaBarang;
+                                    akun[indeksUsername].riwayatPembelian[akun[indeksUsername].riwayatBeli].eksekusiWaktuMasuk();
+                                    akun[indeksUsername].riwayatBeli+=1;
+                                    for (int j = i; j < akun[indeksUsername].jumlahKeranjang - 1; j++)
+                                    {
+                                        akun[indeksUsername].keranjang[j] = akun[indeksUsername].keranjang[j + 1];
+                                    }
+                                    akun[indeksUsername].jumlahKeranjang--;
+                                }
+                            }
+                        }
+                        akun[indeksUsername].oyenSaldo[indeksUsername].saldo -= hargaTotal;
+                        system("cls");
+                        cout << "Barang berhasil dibeli.\nSisa saldo anda adalah Rp. " << akun[indeksUsername].oyenSaldo[indeksUsername].saldo << endl;
+                        system("pause");
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+//ini hapus semua keranjang
+void hapusKeranjang(string username){
+    int indeks = cekUsername(username); 
+    if (indeks == -1) {
+        cout << "Username tidak ditemukan!\n";
+        return;
+    }
+    for (int i = 0; i < jumlahMaksBeli; i++) {
+        akun[indeks].keranjang[i] = {};
+    }    
+    akun[indeks].jumlahKeranjang = 0; 
+    cout << "Keranjang berhasil dikosongkan!\n";
+
+}
+//ini hapus keranjang selesai
 
 // Ini Keranjang Pelanggan
 void keranjangPelanggan(string username){
     int pilihan;
-    bool ulangiPilihan = 1;
+    int ulangiPilihan = 1;
     while (ulangiPilihan)
     {
         system("cls");
@@ -521,6 +685,14 @@ void keranjangPelanggan(string username){
                 beliSemua(username);
             }
             break;
+        case 2:
+            beliBeberapa(username);
+            system("pause");
+        break;
+        case 3:
+            hapusKeranjang(username);
+            system("pause");
+        break;
         case 4:
             ulangiPilihan = 0;
             break;

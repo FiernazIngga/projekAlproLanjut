@@ -110,7 +110,8 @@ struct Akun{
     string username;
     string password;
     OyenPay oyenSaldo[jumlahAkun];
-    Keranjang keranjang[keranjangFull-1];
+    //Keranjang keranjang[keranjangFull-1];
+    Keranjang keranjang[jumlahMaksBeli];
     RiwayatBeli riwayatPembelian[jumlahMaksBeli];
 } akun[jumlahAkun];
 
