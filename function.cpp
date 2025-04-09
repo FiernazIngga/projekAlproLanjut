@@ -584,7 +584,7 @@ void buatAkunOyenPay(string username){
     string pin1, pin2;
     system("cls");
     cout << "Apakah anda ingin mengaktifkan OyenPay? y/n: "; cin >> pilihan1; cin.ignore();
-    if (pilihan1 == 'y')
+    if (pilihan1 == 'y' || pilihan1 == 'Y')
     {
         while (ulangiPin1)
         {
@@ -661,6 +661,51 @@ void riwayatPembelian(string username) {
 }
 // Ini riwayat pembelian selesai
 
+//ini profile
+void profile(string username){
+    char pil;
+    int pilihanNo;
+    int ulangpil = 1;
+    cout << "\n========== Profile Pelanggan ==========\n";
+    cout << "Halo, "<< akun[cekUsername(username)].username << endl;
+    cout<< "Nama  : "<< akun[cekUsername(username)].nama <<endl;
+    cout<< "No Hp : "<< akun[cekUsername(username)].noHp <<endl;
+    cout<< "Alamat: "<< akun[cekUsername(username)].alamat <<endl;
+
+    cout<<"Apakah Anda ingin mengedit profile? (y / n): ";cin>> pil;
+    if(pil=='y' || pil =='Y'){
+        while(ulangpil){
+            cout << "Masukkan pilihan yang ingin anda edit: " << endl;
+            cout << "1. Nama" << endl;
+            cout << "2. No HP" << endl;
+            cout << "3. Alamat" << endl;
+            cout << "4. Keluar" << endl;
+            cout << "Masukkan Pilihan: ";cin>>pilihanNo;
+            switch(pilihanNo){
+                case 1:
+                    cout << "Masukkan nama baru : "; cin >> akun[cekUsername(username)].nama;
+                break;
+                case 2:
+                    cout << "Masukkan no HP baru : "; cin >> akun[cekUsername(username)].noHp;
+                break;
+                case 3:
+                    cout << "Masukkan alamat baru"; cin >> akun[cekUsername(username)].alamat;
+                break;
+                case 4:
+                    ulangpil = 0;
+                break;
+                default:
+                    ulangpil = 1;
+                break;
+            }
+        }
+    }
+
+
+        
+}
+//ini profile selesai
+
 // Ini Menu Setelah Login
 void aksesAkun(string username)
 {
@@ -682,6 +727,11 @@ void aksesAkun(string username)
         case 2:
             system("cls");
             keranjangPelanggan(username);
+            break;
+        case 3:
+            system("cls");
+            profile(username);
+            system("pause");
             break;
         case 4:
             system("cls");
