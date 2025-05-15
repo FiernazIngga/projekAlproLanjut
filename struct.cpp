@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <ctime>
 #include <cctype>
+#include <fstream>
+
 using namespace std;
 
 const int jumlahBarang = 53;

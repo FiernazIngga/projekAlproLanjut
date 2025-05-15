@@ -76,6 +76,18 @@ bool cekUsernameFreeorNot(string username){
     return 0;
 }
 // cek username apakah sudah dipakai atau belum selsai
+bool cekAkun(const string& username) {
+    ifstream file("dataAkun.txt");
+    string line, u, p;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        getline(ss, u, '|');
+        if (u == username) {
+            return true;
+        }
+    }
+    return false;
+}
 
 // Ini regristasi
 void registrasi()
@@ -90,16 +102,16 @@ void registrasi()
     getline(cin, nama);
     cout << "Masukkan No Hp: ";
     getline(cin, noHp);
-    cout << "Masukkan Alamat Dusun-Kelurahan-Kecamatan-Kabupaten-Pulau: ";
+    cout << "Masukkan Pulau: ";
     getline(cin, alamat);
+
     
     while (ulang)
     {
         cout << "Masukkan Username Anda: ";
         getline(cin, username);
-        if (cekUsernameFreeorNot(username))
-        {
-            cout << "Username sudah dipakai, gunakan username yang lain!\n";
+        if (cekAkun(username)){
+            cout << "Akun sudah ada untuk pengguna ini.\n";
             system("pause");
         }
         else
@@ -123,10 +135,15 @@ void registrasi()
         akun[akunPengguna].password = password;
         akunPengguna++;
 
-        cout << "Akun berhasil dibuat!\n";
-    }
-    else
-    {
+        ofstream file("dataAkun.txt", ios::app); 
+        if (file.is_open()) {
+            file << username << "|" << password << "|" << nama << "|" << noHp << "|" << alamat << endl;
+            file.close();
+            cout << "Akun berhasil dibuat dan disimpan!\n";
+        } else {
+            cout << "Gagal membuka file. Data tidak tersimpan.\n";
+        }
+    }else{
         cout << "Registrasi dibatalkan. Silakan ulangi jika ingin mencoba lagi.\n";
     }
 }
@@ -148,17 +165,17 @@ void tampilkanBarang(int index = 0)
 // Ini tampilkan Barang Selesai
 
 // Ini function cek bool login
-bool cekLogin(string username, string password)
-{
-    for (int i = 0; i < akunPengguna; i++)
-    {
-        if (username == akun[i].username && password == akun[i].password)
-        {
-            return 1;
-        }
-    }
-    return 0; 
-}
+// bool cekLogin(string username, string password)
+// {
+//     for (int i = 0; i < akunPengguna; i++)
+//     {
+//         if (username == akun[i].username && password == akun[i].password)
+//         {
+//             return 1;
+//         }
+//     }
+//     return 0; 
+// }
 
 // Ini function cek bool login selesai
 
@@ -172,12 +189,30 @@ void login()
     cin >> username;
     cout << "Masukkan Password Anda: ";
     cin >> password;
-    if (cekLogin(username, password))
-    {
-        aksesAkun(username);
-    }
-    else
-    {
+    
+    string line, u, p;
+    ifstream file("dataAkun.txt");
+    bool found = false;
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            stringstream ss(line);
+            getline(ss, u, '|');
+            getline(ss, p, '|');
+
+            if (u == username && p == password) {
+                found = true;
+                break;
+            }
+        }
+        file.close();
+        
+        if (found){
+            cout << "Login sukses!" << endl;
+            aksesAkun(username);
+        }else{
+            cout << "Username atau password anda salah!" << endl;
+        }
+    }else{
         cout << "Username atau password anda salah" << endl;
         system("pause");
     }
@@ -236,9 +271,9 @@ void tampilkanBarangSorting()
 // Ini Function Untuk Menampilkan Hasil Shorting Selesai
 
 // Ini Shorting Dengan Insertion Short
-void insertionSort(Barang barang[], int n, string identifikasi)
+void insertionSort(Barang barang[], int n, string *identifikasi)
 {
-    if (identifikasi == "tinggi")
+    if (*identifikasi == "tinggi")
     {
         for (int i = 1; i < n; i++)
         {
@@ -251,7 +286,7 @@ void insertionSort(Barang barang[], int n, string identifikasi)
             }
             barang[j + 1] = key;
         }
-    } else if (identifikasi == "rendah") {
+    } else if (*identifikasi == "rendah") {
         for (int i = 1; i < n; i++)
         {
             Barang key = barang[i];
@@ -276,6 +311,7 @@ void beliBarang(string username)
     char pil;
     tampilkanBarang();
     int indeks = cekUsername(username);
+    string identifikasi1 = "rendah", identifikasi12 = "tinggi";
 
     cout << "Mau sorting harga? ( y / n ) : ";
     cin >> pil; 
@@ -288,10 +324,10 @@ void beliBarang(string username)
         switch (pilihan)
         {
         case 1:
-            insertionSort(barang, jumlahBarang, "rendah");
+            insertionSort(barang, jumlahBarang, &identifikasi1);
             break;
         case 2:
-            insertionSort(barang, jumlahBarang, "tinggi");
+            insertionSort(barang, jumlahBarang, &identifikasi12);
             break;
         }
     }
@@ -337,9 +373,9 @@ void beliBarang(string username)
 // Ini Void Untuk Beli Barang Selesai
 
 // Ini Void Untuk Melihat Isi Keranjang
-void lihatKeranjang(string username)
+void lihatKeranjang(string *username)
 {
-    int indeksUsername = cekUsername(username);
+    int indeksUsername = cekUsername(*username);
     int idBarang;
     if (akun[indeksUsername].jumlahKeranjang == 0)
     {
@@ -675,7 +711,7 @@ void keranjangPelanggan(string username){
     while (ulangiPilihan)
     {
         system("cls");
-        lihatKeranjang(username);
+        lihatKeranjang(&username);
         cout << endl;
         cout << "Menu Keranjang: " << endl;
         cout << "1. Beli Semua\n2. Beli Beberapa\n3. Hapus Barang dari Keranjang\n4. Keluar\nMasukkan Pilihan Anda: ";
@@ -718,24 +754,60 @@ void isiSaldo(string username){
     char pilihan;
     cout << "Berapa nominal yang ingin anda masukkan: Rp. "; cin >> saldo; cin.ignore();
     cout << "Apakah anda yakin sudah memasukkan nominal yang benar? y / n: "; cin >> pilihan; cin.ignore();
-    if (pilihan == 'y')
-    {
-        akun[indeksUsername].oyenSaldo[indeksUsername].saldo += saldo;
+    if (pilihan == 'y' || pilihan == 'Y') {
+        // Baca semua data dulu
+        ifstream fileIn("dataAkunOyen.txt");
+        ofstream fileOut("temp.txt");
+        string line, u, p, s;
+
+        while (getline(fileIn, line)) {
+            stringstream ss(line);
+            getline(ss, u, '|');
+            getline(ss, p, '|');
+            getline(ss, s, '|');
+
+            if (u == username) {
+                int saldoLama = stoi(s);
+                int saldoBaru = saldoLama + saldo;
+                fileOut << u << "|" << p << "|" << saldoBaru << endl;
+            } else {
+                fileOut << line << endl;
+            }
+        }
+
+        fileIn.close();
+        fileOut.close();
+        remove("dataAkunOyen.txt");
+        rename("temp.txt", "dataAkunOyen.txt");
+
+        cout << "Saldo berhasil ditambahkan!\n";
     } else {
-        akun[indeksUsername].oyenSaldo[indeksUsername].saldo += 0;
+        cout << "Pengisian saldo dibatalkan.\n";
     }
 }
-// Ini isi saldo selesai
 
-// Ini OyenPayy saldo
+int getSaldoOyen(string username) {
+    ifstream file("dataAkunOyen.txt");
+    string line, u, p, s;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        getline(ss, u, '|');
+        getline(ss, p, '|');
+        getline(ss, s, '|');
+        if (u == username) return stoi(s);
+    }
+    return 0;
+}
+
 void oyenPay(string username){
     int pilihanOyen;
     bool ulangiOyen = 1;
     while (ulangiOyen)
     {
         system("cls");
+        int saldo = getSaldoOyen(username);
         cout << "Halo selamat datang di OyenPay" << endl;
-        cout << "Saldo anda adalah Rp. " << akun[cekUsername(username)].oyenSaldo[cekUsername(username)].saldo << endl;
+        cout << "Saldo anda adalah Rp. " << saldo << endl;
         cout << "1. Isi Saldo\n2. Keluar\nMasukkan Pilihan Anda: "; cin >> pilihanOyen; cin.ignore();
         switch (pilihanOyen)
         {
@@ -756,8 +828,25 @@ void oyenPay(string username){
 }
 // Ini OyenPayy saldo selesai
 
+bool cekAkunOyenSudahAda(const string& username) {
+    ifstream file("dataAkunOyen.txt");
+    string line, u, p;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        getline(ss, u, '|');
+        if (u == username) {
+            return true;
+        }
+    }
+    return false;
+}
+
 // Ini buat akun oyenpay
 void buatAkunOyenPay(string username){
+    if (cekAkunOyenSudahAda(username)) {
+        cout << "Akun OyenPay sudah ada untuk pengguna ini.\n";
+        return;
+    }
     char pilihan1;
     bool ulangiPin1 = 1, cekKarakter = 0, ulangiPin2 = 1;
     string pin1, pin2;
@@ -799,10 +888,17 @@ void buatAkunOyenPay(string username){
                         cout << "Konfirmasi ulang pin. Masukkan pin lagi: "; cin >> pin2; cin.ignore();
                         if (pin1 == pin2)
                         {
-                            akun[cekUsername(username)].oyenSaldo[cekUsername(username)].idOyen = username;
-                            akun[cekUsername(username)].oyenSaldo[cekUsername(username)].pin = pin2;
+                            ofstream file("dataAkunOyen.txt", ios::app); 
+                            if (file.is_open()) {
+                                file << username << "|" << pin2 << "|" << 0 <<endl;
+                                file.close();
+                                cout << "Akun OyenPay berhasil dibuat dan disimpan!\n";
+                            } else {
+                                cout << "Gagal membuka file. Data tidak tersimpan.\n";
+                            }
+
                             ulangiPin2 = 0;
-                            oyenPay(username);
+                            oyenPay(username);                          
                         } else {
                             cout << "Pin 1 dan 2 tidak sama ulangi!!!" << endl;
                             system("pause");
@@ -812,6 +908,8 @@ void buatAkunOyenPay(string username){
                 }
             }
         }
+    } else {
+        cout << "Aktivasi OyenPay dibatalkan.\n";
     }
 }
 // Ini buat akun oyenpay selesai
@@ -893,7 +991,7 @@ void aksesAkun(string username)
     while (menu)
     {
         system("cls");
-        cout << "Selamat datang " << username << "! Selamat berbelanjaa~" << endl;
+        cout << "Selamat datang " << username << "! Selamat Berbelanjaa~" << endl;
         cout << "Menu\n1. Tampilkan Barang\n2. Keranjang\n3. Profil\n4. Riwayat Pembelian\n5. Isi Saldo \n6. Keluar\nIsikan pilian anda: ";
         cin >> pilihan;
         cin.ignore();
@@ -919,8 +1017,7 @@ void aksesAkun(string username)
             break;
         case 5:
             system("cls");
-            if (akun[cekUsername(username)].oyenSaldo[cekUsername(username)].idOyen == "")
-            {
+            if (!cekAkunOyenSudahAda(username)) {
                 buatAkunOyenPay(username);
             } else {
                 oyenPay(username);
